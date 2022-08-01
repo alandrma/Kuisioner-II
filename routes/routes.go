@@ -18,6 +18,8 @@ func SetupRoutes(db *gorm.DB) *gin.Engine {
 	r.PATCH("/user/:id", controllers.UpdateUser)
 	r.DELETE("user/:id", controllers.DeleteUser)
 
+	r.POST("/login", controllers.Login)
+
 	r.GET("/kuisioner", controllers.GetKuis)
 	r.POST("/kuisioner", controllers.TambahKuis)
 	r.GET("/search/:isi", controllers.Search)

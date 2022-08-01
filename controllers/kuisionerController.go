@@ -57,7 +57,7 @@ func Search(c *gin.Context) {
 	var kuisioner models.Kuisioner
 
 	db := c.MustGet("db").(*gorm.DB)
-	if err := db.Where("isi <> ?", c.Param("isi")).Find(&kuisioner).Error; err != nil {
+	if err := db.Where("isi LIKE ?", c.Param("isi")).Find(&kuisioner).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found!"})
 		return
 	}
